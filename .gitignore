@@ -39,3 +39,6 @@ build/
 
 ### Environment variables  ###
 /.env
+
+### Build ###
+/out

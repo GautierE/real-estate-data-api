@@ -24,7 +24,7 @@
                     <archive>
                         <manifest>
                             <addClasspath>true</addClasspath>
-                            <mainClass>org.example.Main</mainClass>
+                            <mainClass>com.yanclone.real_estate_data.main.Main</mainClass>
                         </manifest>
                     </archive>
                 </configuration>

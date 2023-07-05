@@ -1,5 +1,5 @@
 runtime: java
-entrypoint: java -jar ../../../out/artifacts/real_estate_data_api_jar/real_estate_data_api.jar
+entrypoint: java -jar ../../../out/artifacts/real_estate_data_api_jar/real-estate-data-api.jar
 env: flex
 runtime_config:
   operating_system: ubuntu22
