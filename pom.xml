@@ -39,5 +39,24 @@
                 </configuration>
             </plugin>
         </plugins>
+
     </build>
+    <dependencies>
+        <dependency>
+            <groupId>io.stargate.grpc</groupId>
+            <artifactId>grpc-proto</artifactId>
+            <version>1.0.41</version>
+        </dependency>
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-netty-shaded</artifactId>
+            <version>1.41.0</version>
+        </dependency>
+        <!-- https://mvnrepository.com/artifact/io.github.cdimascio/java-dotenv -->
+        <dependency>
+            <groupId>io.github.cdimascio</groupId>
+            <artifactId>java-dotenv</artifactId>
+            <version>5.2.2</version>
+        </dependency>
+    </dependencies>
 </project>
