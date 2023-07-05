@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="real-estate-data-api:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/real_estate_data_api_jar</output-path>
+    <root id="archive" name="real-estate-data-api.jar">
+      <element id="module-output" name="real-estate-data-api" />
+    </root>
+  </artifact>
+</component>
