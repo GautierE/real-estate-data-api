@@ -1,16 +1,16 @@
 package com.yanclone.real_estate_data.models;
 
 public class Property {
-    private int propertyId;
-    private String propertyType;
-    private String address;
-    private String city;
-    private String state;
-    private int postalCode;
-    private float price;
-    private int bedrooms;
-    private int bathrooms;
-    private int yearBuilt;
+    private final int propertyId;
+    private final String propertyType;
+    private final String address;
+    private final String city;
+    private final String state;
+    private final int postalCode;
+    private final float price;
+    private final int bedrooms;
+    private final int bathrooms;
+    private final int yearBuilt;
 
 
     public Property(int propertyId, String propertyType, String address, String city, String state, int postalCode,
@@ -31,79 +31,39 @@ public class Property {
         return propertyId;
     }
 
-    public void setPropertyId(int propertyId) {
-        this.propertyId = propertyId;
-    }
-
     public String getPropertyType() {
         return propertyType;
-    }
-
-    public void setPropertyType(String propertyType) {
-        this.propertyType = propertyType;
     }
 
     public String getAddress() {
         return address;
     }
 
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public String getCity() {
         return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
     }
 
     public String getState() {
         return state;
     }
 
-    public void setState(String state) {
-        this.state = state;
-    }
-
     public int getPostalCode() {
         return postalCode;
-    }
-
-    public void setPostalCode(int postalCode) {
-        this.postalCode = postalCode;
     }
 
     public float getPrice() {
         return price;
     }
 
-    public void setPrice(float price) {
-        this.price = price;
-    }
-
     public int getBedrooms() {
         return bedrooms;
-    }
-
-    public void setBedrooms(int bedrooms) {
-        this.bedrooms = bedrooms;
     }
 
     public int getBathrooms() {
         return bathrooms;
     }
 
-    public void setBathrooms(int bathrooms) {
-        this.bathrooms = bathrooms;
-    }
-
     public int getYearBuilt() {
         return yearBuilt;
-    }
-
-    public void setYearBuilt(int yearBuilt) {
-        this.yearBuilt = yearBuilt;
     }
 }

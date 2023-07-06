@@ -29,7 +29,8 @@ public class PropertyController implements HttpHandler {
         ObjectMapper objectMapper = new ObjectMapper();
         objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        ResponseData responseData = new ResponseData(200, "");
+        ResponseData responseData;
+
         if (endpoint.endsWith("/properties")) {
             responseData = handlePropertiesEndpoint(method, objectMapper);
         } else if (endpoint.endsWith("/property")) {
@@ -142,8 +143,8 @@ public class PropertyController implements HttpHandler {
 }
 
 class ResponseData {
-    private String response;
-    private int statusCode;
+    private final String response;
+    private final int statusCode;
 
     public ResponseData(int statusCode, String response)
     {
@@ -155,15 +156,7 @@ class ResponseData {
         return statusCode;
     }
 
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
-
     public String getResponse() {
         return response;
-    }
-
-    public void setResponse(String response) {
-        this.response = response;
     }
 }
