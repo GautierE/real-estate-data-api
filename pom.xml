@@ -34,8 +34,8 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>2.4.4</version>
                 <configuration>
-                    <deploy.projectId>real-estate-data-api</deploy.projectId>
-                    <deploy.version>0</deploy.version>
+                    <deploy.projectId>emerald-spring-392016</deploy.projectId>
+                    <deploy.version>1</deploy.version>
                 </configuration>
             </plugin>
         </plugins>
