@@ -13,6 +13,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
+import org.jetbrains.annotations.NotNull;
 
 public class PropertyController implements HttpHandler {
     private final PropertyService propertyService;
@@ -36,24 +37,7 @@ public class PropertyController implements HttpHandler {
             exchange.getResponseHeaders().set("Content-Type", "application/json");
         } else if (exchange.getRequestURI().getPath().endsWith("/property")) {
             if (method.equalsIgnoreCase("POST")) {
-                String requestBody = new String(exchange.getRequestBody().readAllBytes());
-                JsonObject jsonObject = JsonParser.parseString(requestBody).getAsJsonObject();
-
-                int propertyId = jsonObject.get("propertyId").getAsInt();
-                String propertyType = jsonObject.get("propertyType").getAsString();
-                String address = jsonObject.get("address").getAsString();
-                String city = jsonObject.get("city").getAsString();
-                String state = jsonObject.get("state").getAsString();
-                int postalCode = jsonObject.get("postalCode").getAsInt();
-                float price = jsonObject.get("price").getAsFloat();
-                int bedrooms = jsonObject.get("bedrooms").getAsInt();
-                int bathrooms = jsonObject.get("bathrooms").getAsInt();
-                int yearBuilt = jsonObject.get("yearBuilt").getAsInt();
-
-                Property newProperty = new Property(propertyId, propertyType, address, city, state, postalCode,
-                        price, bedrooms, bathrooms, yearBuilt);
-
-
+                Property newProperty = getPropertyFromRequest(exchange);
                 Property createdProperty = propertyService.createProperty(newProperty);
 
                 response = objectMapper.writeValueAsString(createdProperty);
@@ -71,21 +55,7 @@ public class PropertyController implements HttpHandler {
                 }
             } else if (method.equalsIgnoreCase("PUT")) {
                 String propertyId = extractPropertyIdFromRequest(exchange);
-                String requestBody = new String(exchange.getRequestBody().readAllBytes());
-                JsonObject jsonObject = JsonParser.parseString(requestBody).getAsJsonObject();
-
-                String propertyType = jsonObject.get("propertyType").getAsString();
-                String address = jsonObject.get("address").getAsString();
-                String city = jsonObject.get("city").getAsString();
-                String state = jsonObject.get("state").getAsString();
-                int postalCode = jsonObject.get("postalCode").getAsInt();
-                float price = jsonObject.get("price").getAsFloat();
-                int bedrooms = jsonObject.get("bedrooms").getAsInt();
-                int bathrooms = jsonObject.get("bathrooms").getAsInt();
-                int yearBuilt = jsonObject.get("yearBuilt").getAsInt();
-
-                Property updatedProperty = new Property(Integer.parseInt(propertyId), propertyType, address, city, state, postalCode,
-                        price, bedrooms, bathrooms, yearBuilt);
+                Property updatedProperty = getPropertyFromRequest(exchange);
 
                 Property updated = propertyService.updateProperty(propertyId, updatedProperty);
 
@@ -113,6 +83,25 @@ public class PropertyController implements HttpHandler {
         OutputStream outputStream = exchange.getResponseBody();
         outputStream.write(response.getBytes());
         outputStream.close();
+    }
+
+    private static Property getPropertyFromRequest(HttpExchange exchange) throws IOException {
+        String requestBody = new String(exchange.getRequestBody().readAllBytes());
+        JsonObject jsonObject = JsonParser.parseString(requestBody).getAsJsonObject();
+
+        int propertyId = jsonObject.get("propertyId").getAsInt();
+        String propertyType = jsonObject.get("propertyType").getAsString();
+        String address = jsonObject.get("address").getAsString();
+        String city = jsonObject.get("city").getAsString();
+        String state = jsonObject.get("state").getAsString();
+        int postalCode = jsonObject.get("postalCode").getAsInt();
+        float price = jsonObject.get("price").getAsFloat();
+        int bedrooms = jsonObject.get("bedrooms").getAsInt();
+        int bathrooms = jsonObject.get("bathrooms").getAsInt();
+        int yearBuilt = jsonObject.get("yearBuilt").getAsInt();
+
+        return new Property(propertyId, propertyType, address, city, state, postalCode,
+                price, bedrooms, bathrooms, yearBuilt);
     }
 
     private String extractPropertyIdFromRequest(HttpExchange exchange) {
