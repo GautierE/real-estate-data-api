@@ -12,6 +12,7 @@ public class Property {
     private int bathrooms;
     private int yearBuilt;
 
+
     public Property(int propertyId, String propertyType, String address, String city, String state, int postalCode,
                     float price, int bedrooms, int bathrooms, int yearBuilt) {
         this.propertyId = propertyId;

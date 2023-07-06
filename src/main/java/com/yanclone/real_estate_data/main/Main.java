@@ -24,6 +24,7 @@ public class Main {
         HttpServer server = HttpServer.create(new InetSocketAddress(port), 0);
 
         server.createContext("/properties", propertyHandler);
+        server.createContext("/property", propertyHandler);
 
         server.start();
 
