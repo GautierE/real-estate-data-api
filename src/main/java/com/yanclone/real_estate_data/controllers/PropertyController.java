@@ -8,6 +8,7 @@ import com.yanclone.real_estate_data.models.Property;
 import com.yanclone.real_estate_data.services.PropertyService;
 
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.OutputStream;
 import java.util.List;
 
@@ -23,27 +24,36 @@ public class PropertyController implements HttpHandler {
 
     @Override
     public void handle(HttpExchange exchange) throws IOException {
-        String method = exchange.getRequestMethod();
-        String endpoint = exchange.getRequestURI().getPath();
+        try {
 
-        ObjectMapper objectMapper = new ObjectMapper();
-        objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
 
-        ResponseData responseData;
+            String method = exchange.getRequestMethod();
+            String endpoint = exchange.getRequestURI().getPath();
 
-        if (endpoint.endsWith("/properties")) {
-            responseData = handlePropertiesEndpoint(method, objectMapper);
-        } else if (endpoint.endsWith("/property")) {
-            responseData = handlePropertyEndpoint(method, exchange, objectMapper);
-        } else {
-            responseData = new ResponseData(404, "Invalid endpoint");
+            ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.enable(SerializationFeature.INDENT_OUTPUT);
+
+            ResponseData responseData;
+
+            if (endpoint.endsWith("/properties")) {
+                responseData = handlePropertiesEndpoint(method, objectMapper);
+            } else if (endpoint.endsWith("/property")) {
+                responseData = handlePropertyEndpoint(method, exchange, objectMapper);
+            } else {
+                responseData = new ResponseData(404, "Invalid endpoint");
+            }
+
+            exchange.getResponseHeaders().set("Content-Type", "application/json");
+            exchange.sendResponseHeaders(responseData.getStatusCode(), responseData.getResponse().getBytes().length);
+            OutputStream outputStream = exchange.getResponseBody();
+            outputStream.write(responseData.getResponse().getBytes());
+            outputStream.close();
+            exchange.close();
         }
-
-        exchange.getResponseHeaders().set("Content-Type", "application/json");
-        exchange.sendResponseHeaders(responseData.getStatusCode(), responseData.getResponse().getBytes().length);
-        OutputStream outputStream = exchange.getResponseBody();
-        outputStream.write(responseData.getResponse().getBytes());
-        outputStream.close();
+        catch (Exception e)
+        {
+            System.out.println(e.getMessage());
+        }
     }
 
     private ResponseData handlePropertiesEndpoint(String method, ObjectMapper objectMapper) throws IOException {

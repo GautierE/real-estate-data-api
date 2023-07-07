@@ -24,7 +24,6 @@ public class PropertyService {
                 .build();
 
         blockingStub = StargateGrpc.newBlockingStub(channel)
-                .withDeadlineAfter(10, TimeUnit.SECONDS)
                 .withCallCredentials(new StargateBearerToken(astraToken));
     }
 
