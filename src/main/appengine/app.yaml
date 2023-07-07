@@ -1,5 +1,4 @@
 runtime: java
-entrypoint: java -jar ../../../target/real-estate-data-api-1.1-SNAPSHOT.jar
 env: flex
 runtime_config:
   operating_system: ubuntu22

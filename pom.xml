@@ -17,6 +17,14 @@
     <build>
         <plugins>
             <plugin>
+                <groupId>org.codehaus.mojo</groupId>
+                <artifactId>exec-maven-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <mainClass>com.yanclone.real_estate_data.main.Main</mainClass>
+                </configuration>
+            </plugin>
+            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-jar-plugin</artifactId>
                 <version>2.4</version>
@@ -34,8 +42,9 @@
                 <artifactId>appengine-maven-plugin</artifactId>
                 <version>2.4.4</version>
                 <configuration>
-                    <deploy.projectId>emerald-spring-392016</deploy.projectId>
-                    <deploy.version>1</deploy.version>
+                    <deploy.stopPreviousVersion>true</deploy.stopPreviousVersion>
+                    <deploy.projectId>real-estate-api-392106</deploy.projectId>
+                    <deploy.version>0</deploy.version>
                 </configuration>
             </plugin>
         </plugins>
@@ -52,6 +61,13 @@
             <artifactId>grpc-netty-shaded</artifactId>
             <version>1.41.0</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/io.grpc/grpc-stub -->
+        <dependency>
+            <groupId>io.grpc</groupId>
+            <artifactId>grpc-stub</artifactId>
+            <version>1.56.1</version>
+        </dependency>
+
         <dependency>
             <groupId>com.google.protobuf</groupId>
             <artifactId>protobuf-java-util</artifactId>

@@ -9,7 +9,6 @@ import io.stargate.proto.StargateGrpc;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 
 public class PropertyService {
     private final StargateGrpc.StargateBlockingStub blockingStub;
