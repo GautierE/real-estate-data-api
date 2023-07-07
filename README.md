@@ -4,6 +4,9 @@ Java-based web API hosted on Google Cloud Platform that provides mock real estat
 <b>API documentation : </b>
 <ol>
     <li>
+        API URL : https://real-estate-api-392106.ew.r.appspot.com/
+    </li>
+    <li>
         <p>Route: <code>/properties</code></p>
         <ul>
             <li>Method: GET</li>
