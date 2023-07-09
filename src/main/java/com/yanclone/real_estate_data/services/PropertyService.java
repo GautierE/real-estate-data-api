@@ -38,15 +38,17 @@ public class PropertyService {
             Property property = new Property
                     (
                             (int) row.getValues(0).getInt(),
-                            row.getValues(7).getString(),
+                            row.getValues(9).getString(),
                             row.getValues(1).getString(),
                             row.getValues(4).getString(),
-                            row.getValues(8).getString(),
-                            (int) row.getValues(5).getInt(),
-                            row.getValues(6).getInt(),
+                            row.getValues(10).getString(),
+                            (int) row.getValues(7).getInt(),
+                            row.getValues(8).getInt(),
                             (int) row.getValues(3).getInt(),
                             (int) row.getValues(2).getInt(),
-                            (int) row.getValues(9).getInt()
+                            (int) row.getValues(11).getInt(),
+                            row.getValues(5).getFloat(),
+                            row.getValues(6).getFloat()
                     );
             properties.add(property);
         }
@@ -66,15 +68,17 @@ public class PropertyService {
             QueryOuterClass.Row row = queryString.getResultSet().getRows(0);
             property = new Property(
                     (int) row.getValues(0).getInt(),
-                    row.getValues(7).getString(),
+                    row.getValues(9).getString(),
                     row.getValues(1).getString(),
                     row.getValues(4).getString(),
-                    row.getValues(8).getString(),
-                    (int) row.getValues(5).getInt(),
-                    row.getValues(6).getInt(),
+                    row.getValues(10).getString(),
+                    (int) row.getValues(7).getInt(),
+                    row.getValues(8).getInt(),
                     (int) row.getValues(3).getInt(),
                     (int) row.getValues(2).getInt(),
-                    (int) row.getValues(9).getInt()
+                    (int) row.getValues(11).getInt(),
+                    row.getValues(5).getFloat(),
+                    row.getValues(6).getFloat()
             );
         }
 

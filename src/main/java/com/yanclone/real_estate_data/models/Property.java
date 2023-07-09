@@ -7,14 +7,17 @@ public class Property {
     private final String city;
     private final String state;
     private final int postalCode;
-    private final float price;
+    private final double price;
     private final int bedrooms;
     private final int bathrooms;
     private final int yearBuilt;
 
+    private final float latitude;
+    private final float longitude;
+
 
     public Property(int propertyId, String propertyType, String address, String city, String state, int postalCode,
-                    float price, int bedrooms, int bathrooms, int yearBuilt) {
+                    double price, int bedrooms, int bathrooms, int yearBuilt, float latitude, float longitude) {
         this.propertyId = propertyId;
         this.propertyType = propertyType;
         this.address = address;
@@ -25,6 +28,8 @@ public class Property {
         this.bedrooms = bedrooms;
         this.bathrooms = bathrooms;
         this.yearBuilt = yearBuilt;
+        this.latitude = latitude;
+        this.longitude = longitude;
     }
 
     public int getPropertyId() {
@@ -51,7 +56,7 @@ public class Property {
         return postalCode;
     }
 
-    public float getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -65,5 +70,13 @@ public class Property {
 
     public int getYearBuilt() {
         return yearBuilt;
+    }
+
+    public float getLatitude() {
+        return latitude;
+    }
+
+    public float getLongitude() {
+        return longitude;
     }
 }

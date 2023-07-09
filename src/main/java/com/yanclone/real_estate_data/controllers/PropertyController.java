@@ -129,9 +129,11 @@ public class PropertyController implements HttpHandler {
         int bedrooms = jsonObject.get("bedrooms").getAsInt();
         int bathrooms = jsonObject.get("bathrooms").getAsInt();
         int yearBuilt = jsonObject.get("yearBuilt").getAsInt();
+        float latitude = jsonObject.get("latitude").getAsFloat();
+        float longitude = jsonObject.get("longitude").getAsFloat();
 
         return new Property(propertyId, propertyType, address, city, state, postalCode,
-                price, bedrooms, bathrooms, yearBuilt);
+                price, bedrooms, bathrooms, yearBuilt, latitude, longitude);
     }
 
     private String extractPropertyIdFromRequest(HttpExchange exchange) {
