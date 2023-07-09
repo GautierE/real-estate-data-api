@@ -23,10 +23,14 @@ public class PropertyController implements HttpHandler {
     @Override
     public void handle(HttpExchange exchange) throws IOException {
         // Set CORS headers
-        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "http://localhost:4200");
-        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "https://yanclone.vercel.app/");
-        exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE");
-        exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type");
+        exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
+
+        if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
+            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, OPTIONS");
+            exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
+            exchange.sendResponseHeaders(204, -1);
+            return;
+        }
 
         String method = exchange.getRequestMethod();
         String endpoint = exchange.getRequestURI().getPath();

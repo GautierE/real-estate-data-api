@@ -98,7 +98,9 @@ public class PropertyService {
                 property.getPrice() + ", " +
                 property.getBedrooms() + ", " +
                 property.getBathrooms() + ", " +
-                property.getYearBuilt() +
+                property.getYearBuilt() + ", " +
+                property.getLatitude() + ", " +
+                property.getLongitude() +
                 ")";
 
         blockingStub.executeQuery(QueryOuterClass.Query.newBuilder().setCql(cql).build());
