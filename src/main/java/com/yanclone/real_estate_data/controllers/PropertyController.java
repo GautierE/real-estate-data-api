@@ -129,7 +129,7 @@ public class PropertyController implements HttpHandler {
         String city = jsonObject.get("city").getAsString();
         String state = jsonObject.get("state").getAsString();
         int postalCode = jsonObject.get("postalCode").getAsInt();
-        float price = jsonObject.get("price").getAsFloat();
+        String price = jsonObject.get("price").getAsString();
         int bedrooms = jsonObject.get("bedrooms").getAsInt();
         int bathrooms = jsonObject.get("bathrooms").getAsInt();
         int yearBuilt = jsonObject.get("yearBuilt").getAsInt();

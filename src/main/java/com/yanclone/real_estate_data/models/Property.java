@@ -7,7 +7,7 @@ public class Property {
     private final String city;
     private final String state;
     private final int postalCode;
-    private final double price;
+    private final String price;
     private final int bedrooms;
     private final int bathrooms;
     private final int yearBuilt;
@@ -17,7 +17,7 @@ public class Property {
 
 
     public Property(int propertyId, String propertyType, String address, String city, String state, int postalCode,
-                    double price, int bedrooms, int bathrooms, int yearBuilt, float latitude, float longitude) {
+                    String price, int bedrooms, int bathrooms, int yearBuilt, float latitude, float longitude) {
         this.propertyId = propertyId;
         this.propertyType = propertyType;
         this.address = address;
@@ -56,7 +56,7 @@ public class Property {
         return postalCode;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
