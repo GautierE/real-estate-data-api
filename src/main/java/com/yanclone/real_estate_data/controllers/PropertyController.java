@@ -26,7 +26,7 @@ public class PropertyController implements HttpHandler {
         exchange.getResponseHeaders().add("Access-Control-Allow-Origin", "*");
 
         if (exchange.getRequestMethod().equalsIgnoreCase("OPTIONS")) {
-            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, OPTIONS");
+            exchange.getResponseHeaders().add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
             exchange.getResponseHeaders().add("Access-Control-Allow-Headers", "Content-Type,Authorization");
             exchange.sendResponseHeaders(204, -1);
             return;
@@ -78,9 +78,9 @@ public class PropertyController implements HttpHandler {
 
         switch (method.toUpperCase()) {
             case "POST" -> {
-                Property newProperty = getPropertyFromRequest(exchange);
-                Property createdProperty = propertyService.createProperty(newProperty);
-                response = objectMapper.writeValueAsString(createdProperty);
+                    Property newProperty = getPropertyFromRequest(exchange);
+                    Property createdProperty = propertyService.createProperty(newProperty);
+                    response = objectMapper.writeValueAsString(createdProperty);
             }
             case "GET" -> {
                 Property retrievedProperty = propertyService.getPropertyById(propertyId);
@@ -94,6 +94,7 @@ public class PropertyController implements HttpHandler {
             case "PUT" -> {
                 Property updatedProperty = getPropertyFromRequest(exchange);
                 Property updated = propertyService.updateProperty(propertyId, updatedProperty);
+
                 if (updated != null) {
                     response = objectMapper.writeValueAsString(updated);
                 } else {

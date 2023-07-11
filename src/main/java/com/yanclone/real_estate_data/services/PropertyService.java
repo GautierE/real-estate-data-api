@@ -87,15 +87,15 @@ public class PropertyService {
 
     public Property createProperty(Property property) {
         String cql = "INSERT INTO " + this.astraKeySpace + ".property " +
-                "(property_id, property_type, address, city, state, postal_code, price, bedrooms, bathrooms, year_built) " +
+                "(property_id, property_type, address, city, state, postal_code, price_string, bedrooms, bathrooms, year_built, latitude, longitude) " +
                 "VALUES (" +
                 property.getPropertyId() + ", '" +
                 property.getPropertyType() + "', '" +
                 property.getAddress() + "', '" +
                 property.getCity() + "', '" +
                 property.getState() + "', " +
-                property.getPostalCode() + ", " +
-                property.getPrice() + ", " +
+                property.getPostalCode() + ", '" +
+                property.getPrice() + "', " +
                 property.getBedrooms() + ", " +
                 property.getBathrooms() + ", " +
                 property.getYearBuilt() + ", " +
@@ -115,13 +115,13 @@ public class PropertyService {
                 "city = '" + updatedProperty.getCity() + "', " +
                 "state = '" + updatedProperty.getState() + "', " +
                 "postal_code = " + updatedProperty.getPostalCode() + ", " +
-                "price = " + updatedProperty.getPrice() + ", " +
+                "price_string = '" + updatedProperty.getPrice() + "', " +
                 "bedrooms = " + updatedProperty.getBedrooms() + ", " +
                 "bathrooms = " + updatedProperty.getBathrooms() + ", " +
                 "year_built = " + updatedProperty.getYearBuilt() +
                 " WHERE property_id = " + propertyId;
 
-        blockingStub.executeQuery(QueryOuterClass.Query.newBuilder().setCql(cql).build());
+        var a = blockingStub.executeQuery(QueryOuterClass.Query.newBuilder().setCql(cql).build());
 
         return updatedProperty;
     }
