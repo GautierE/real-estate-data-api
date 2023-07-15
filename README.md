@@ -1,7 +1,14 @@
-# real-estate-data-api
+# Real estate data API
+<h2>Overview</h2>
 Java-based web API hosted on Google Cloud Platform that provides mock real estate data retrieved from a Cassandra database hosted using (DataStax) Astra DB.
 
-<b>API documentation : </b>
+<h2>Front-end</h2>
+This project is also linked to a front-end built using Angular. It is used to display and interact with the data from this API. 
+<br/>
+<br/>
+You can find the code for the front-end in the following GitHub repository: https://github.com/GautierE/saas-real-estate-clone.
+
+<h2>API documentation </h2>
 <ol>
     <li>
         API URL : https://real-estate-api-392106.ew.r.appspot.com/
@@ -32,7 +39,9 @@ Java-based web API hosted on Google Cloud Platform that provides mock real estat
         "price": 514654, <br/>
         "bedrooms": 8, <br/>
         "bathrooms": 3, <br/>
-        "yearBuilt": 2000 <br/>
+        "yearBuilt": 2000, <br/>
+        "latitude": 3.2, <br/>
+        "longitude": 2.1 <br/>
     }
           </li>
             <li>Response: Returns the created property as a JSON object.</li>
