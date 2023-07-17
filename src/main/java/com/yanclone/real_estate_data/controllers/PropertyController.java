@@ -64,7 +64,7 @@ public class PropertyController implements HttpHandler {
             List<Property> properties = propertyService.getAllProperties();
             response = objectMapper.writeValueAsString(properties);
         } else {
-            response = "Invalid method for /properties endpoint";
+            response = objectMapper.writeValueAsString("Invalid method for /properties endpoint");
             statusCode = 400;
         }
 
@@ -87,7 +87,7 @@ public class PropertyController implements HttpHandler {
                 if (retrievedProperty != null) {
                     response = objectMapper.writeValueAsString(retrievedProperty);
                 } else {
-                    response = "Property not found";
+                    response = objectMapper.writeValueAsString("Property not found");
                     statusCode = 404;
                 }
             }
@@ -98,21 +98,21 @@ public class PropertyController implements HttpHandler {
                 if (updated != null) {
                     response = objectMapper.writeValueAsString(updated);
                 } else {
-                    response = "Failed to update property";
+                    response = objectMapper.writeValueAsString("Failed to update property");
                     statusCode = 400;
                 }
             }
             case "DELETE" -> {
                 boolean deleted = propertyService.deleteProperty(propertyId);
                 if (deleted) {
-                    response = "Property deleted";
+                    response = objectMapper.writeValueAsString("Property deleted");
                 } else {
-                    response = "Failed to delete property";
+                    response = objectMapper.writeValueAsString("Failed to delete property");
                     statusCode = 400;
                 }
             }
             default -> {
-                response = "Invalid method for /property endpoint";
+                response = objectMapper.writeValueAsString("Invalid method for /property endpoint");
                 statusCode = 400;
             }
         }
