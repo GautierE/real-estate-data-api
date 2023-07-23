@@ -8,7 +8,7 @@ This project is also linked to a front-end built using Angular. It is used to di
 <br/>
 You can find the code for the front-end in the following GitHub repository: https://github.com/GautierE/saas-real-estate-clone.
 
-<h2>API documentation </h2>
+<h2>API documentation</h2>
 <ol>
     <li>
         API URL : https://real-estate-api-392106.ew.r.appspot.com/
